@@ -26,13 +26,13 @@ export default{
       const toHtml = text
             //Do not allow line jumps when there is a <caution>, <example> or <tip> tag
             //since they render into div which will be already with some margins
-            .replace(/\n*<(\/?example|\/?caution|\?tip)>\n*/gm, "<$1>")
+            .replace(/(\\n)*<(\/?example|\/?caution|\/?tip)>(\\n)*/gm, "<$2>")
             // Replace ** something ** with <b>something</b>
             .replace(/\*\*(.*)\*\*/gim, "<b>$1</b>")
             //Replace <color>something</color> for <span class="color">something</span>
             .replace(/<color>(.*?)<\/color>/gims, "<span class='color'>$1</span>")
-            //Replace multiple \r\n or \n for one <br>
-            .replace(/[\r\n]+/gm, "<br>")
+            //Replace multiple \n for one <br>
+            .replace(/(\\n)+/gm, "<br>")
             //Replace <caution>something</caution> for <div class="caution">something</div>
             .replace(/<caution>(.*?)<\/caution>/gims, "<div class='caution'>$1</div>")
             //Replace <example>something</example> for <div class="example">something</div>
