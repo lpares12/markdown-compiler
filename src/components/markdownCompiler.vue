@@ -28,7 +28,7 @@ export default{
             //since they render into div which will be already with some margins
             .replace(/(\\n)*<(\/?example|\/?caution|\/?tip)>(\\n)*/gm, "<$2>")
             // Replace ** something ** with <b>something</b>
-            .replace(/\*\*(.*)\*\*/gim, "<b>$1</b>")
+            .replace(/\*\*(.*?)\*\*/gim, "<b>$1</b>")
             //Replace <color>something</color> for <span class="color">something</span>
             .replace(/<color>(.*?)<\/color>/gims, "<span class='color'>$1</span>")
             //Replace multiple \n for one <br>
@@ -40,7 +40,7 @@ export default{
             //Replace <example>something</example> for <div class="example">something</div>
             .replace(/<tip>(.*?)<\/tip>/gims, "<div class='tip'>$1</div>")
             //Replace ~~something~~ for <s>something</s>
-            .replace(/~~(.*)~~/gim, "<s>$1</s>")
+            .replace(/~~(.*?)~~/gim, "<s>$1</s>")
             //Replace [ab]{cda} for <span class="kanji">ab<span>cd</span></span>
             .replace(/\[([^\][]+)\]\{([^{}]+)\}/gim, "<span class='kanji'>$1<span>$2</span></span>")
       return toHtml.trim();
